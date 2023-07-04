@@ -18,7 +18,7 @@ exports.webhook = onRequest((req, res) => {
     //mmessage送信
     lineClient.replyMessage(events.replyToken, {
       type: "text",
-      text: "Hello World!!!",
+      text: "こんにちは",
     });
   } else {
     console.log("fail to validate signature");

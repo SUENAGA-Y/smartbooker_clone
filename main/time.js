@@ -52,7 +52,7 @@ exports.time = async (name, docid) => {
   } */
 
   let array, i;
-  const time = (await db.collection("clients").doc(name).collection("info").doc("interval").get()).data().min;
+  const time = (await db.collection()).data().min;
   const colorCode = await color(name);
   if (time == 15) {
     //array = vacantSearch(id, col, name);

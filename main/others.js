@@ -3,7 +3,7 @@ const { database } = require("./database");
 const db = database();
 
 exports.color = async (name) => {
-  const color = (await db.collection("clients").doc(name).collection("info").doc("color").get()).data().color;
+  const color = (await db.collection()).data().color;
   return color;
 };
 

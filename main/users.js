@@ -4,12 +4,7 @@ const db = database();
 
 //ユーザ追加
 exports.addNewUser = async (id, name) => {
-  await db.collection("users").doc(name).collection("userList").doc(id).set({
-    user_id: id,
-    name: "新規",
-    furigana: "未登録",
-    phone: "未登録",
-  });
+  await db.collection().set({});
 };
 
 //ユーザのステータス更新
@@ -21,7 +16,7 @@ function updateUser(id, name) {
 
 //idからユーザ名を検索
 exports.getNameById = async (id, name) => {
-  const userList = db.collection("users").doc(name).collection("userList").doc(id);
+  const userList = db.collection();
   const doc = await userList.get();
 
   if (!doc.exists) {
@@ -30,20 +25,4 @@ exports.getNameById = async (id, name) => {
     //console.log(doc.data().name);
   }
   return doc.data().name;
-  /* 
-  if (snapshot.empty) {
-    console.log("No matching documents.");
-    return;
-  }
-  snapshot.forEach((doc) => {
-    console.log(snapshot);
-  }); */
-  /*     .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        console.log(doc.data().name);
-      });
-    })
-    .catch((err) => {
-      console.log("Error getting documents", err);
-    }); */
 };

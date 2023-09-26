@@ -4,12 +4,8 @@ const db = database();
 
 //idで最新の予約情報を検索してデータを追加
 exports.addNewBooking = async (id, username, name) => {
-  const bookingCollection = await db.collection("booking").doc(name).collection("booking");
-  const data = {
-    userid: id,
-    name: username,
-    timestamp: new Date(),
-  };
+  const bookingCollection = await db.collection();
+  const data = {};
 
   const res = await bookingCollection.add(data);
   return res.id;
@@ -17,10 +13,8 @@ exports.addNewBooking = async (id, username, name) => {
 
 //idで最新の予約情報を検索してデータを追加
 exports.getLatestBooking = async (name, docid, key, val) => {
-  const bookingDocument = await db.collection("booking").doc(name).collection("booking").doc(docid);
-  const data = {
-    [key]: val,
-  };
+  const bookingDocument = await db.collection();
+  const data = {};
   const res = await bookingDocument.update(data);
   //console.log(res);
 };

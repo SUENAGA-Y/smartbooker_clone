@@ -4,7 +4,7 @@ const { color } = require("./others");
 const db = database();
 
 const menuData = async (name) => {
-  const menuRef = db.collection("clients").doc(name).collection("menu");
+  const menuRef = db.collection();
   const menuSnapshot = await menuRef.get();
   const promises = menuSnapshot.docs.map(async (doc) => {
     const menuData = doc.data();
